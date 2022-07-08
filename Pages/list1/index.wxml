@@ -1,0 +1,50 @@
+<wxs module="util" src="../util.wxs" />
+
+
+
+<view class="container" wx:if="{{todos.length >= 0}}">
+  <view class="form-group_label">
+    <input class="form-cell_input" placeholder="输入日期(如07/01)" placeholder-class="form-cell_title-placeholder"
+        bindinput="onDescInput" value="{{find}}" /><button bindtap="onDescIn">打卡查询</button>
+    <mp-badge content="已打卡{{pending.length}}" style="margin-left: 5px;" />
+  </view>
+  <view class="form-group" wx:if="{{pending.length > 0}}">
+    <view class="form-cell" wx:for="{{pending}}" wx:key="index">
+      <mp-slideview buttons="{{slideButtons}}" data-index='{{index}}' bindbuttontap="slideButtonTap">
+        <view class="slide" data-index="{{index}}" bindtap="toDetailPage">
+         
+          <view class="todo-info">
+            <view class="todo-info_title">{{util.filterStr(item.date, 15)}} </view>
+            <!-- <view class="todo-info_desc">{{util.filterStr(item.desc, 10)}}</view> -->
+            <view class="todo-info_desc"><text>{{item.a}}</text><text>/</text><text>上午:{{item.title}}</text>
+              <text>℃/</text><text>下午:{{item.title2}}</text>
+              <text>℃/</text>
+							<text>{{freqOptions4[item.freq4]}}</text><text></text></view>
+          </view>
+          <image wx:if="{{item.star}}" class="star" src="../../images/file/star.png" />
+          <image wx:if="{{item.files.length > 0}}" data-index='{{index}}' class="file" src="../../images/file/file.png" catchtap="toFileList" />
+        </view>
+      </mp-slideview>
+    </view>
+  </view>
+  <view class="form-group_label">
+    未打卡
+    <mp-badge content="{{18-pending.length}}" style="margin-left: 5px;" />
+  </view>
+  <view class="form-group" wx:if="{{finished.length > 0}}">
+    <view class="form-cell" wx:for="{{finished}}" wx:key="index">
+      <mp-slideview buttons="{{[]}}" data-index='{{index}}' bindbuttontap="slideButtonTap">
+        <view class="slide">
+          <image class="checkbox" data-index='{{index}}' src="../../images/list/finished.png" bindtap="resetTodo"/>
+          <view class="todo-info">
+            <view class="todo-info_title">{{util.filterStr(item.date, 15)}} </view>
+            <!-- <view class="todo-info_desc">{{util.filterStr(item.desc, 10)}}</view> -->
+            <view class="todo-info_desc"><text>{{item.a}}</text><text>/</text><text>{{item.title}}</text>
+              <text>℃/</text><text>{{freqOptions4[item.freq4]}}</text></view>
+          </view>
+        </view>
+      </mp-slideview>
+    </view>
+  </view>
+  
+</view>

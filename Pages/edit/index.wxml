@@ -1,0 +1,64 @@
+
+<view class="container">
+  <view class="form-group">
+    <view class="form-cell">
+      <view class="form-cell_title" >填表人:{{a}}</view>
+      <view class="form-cell_title">填表时间:{{date}}</view>
+      <view class="form-cell_title"></view>
+    <view><text>今日体温(℃):</text>上午<text>{{title}}</text>下午<text>{{title2}}</text> </view>
+				
+    </view>
+    <view class="form-cell">
+    <view class="form-cell_title">备注:<text>{{desc}}</text></view>
+     
+    </view>
+
+  </view>
+  <view class="form-group">
+
+  </view>
+  <view class="form-group">
+   
+    <view class="form-cell inline">
+      <view>今日工作情况</view>
+      <picker class="option" bindchange="onChooseFreq4" range="{{freqOptions4}}">
+        {{freqOptions4[freq4]}}
+      </picker>
+      
+    </view>
+    <view class="form-cell inline">
+      <view>有无11类不适</view>
+      <picker class="option"  range="{{freqOptions1}}">
+        {{freqOptions1[freq1]}}
+      </picker>
+
+      
+    </view>
+    <view class="form-cell inline">
+      <view>核酸是否有效</view>
+      <picker class="option"  range="{{freqOptions2}}">
+        {{freqOptions2[freq2]}}
+      </picker>
+
+      
+    </view>
+    <view class="form-cell inline">
+      <view>中高风险旅居史及人员接触</view>
+      <picker class="option"  range="{{freqOptions3}}">
+        {{freqOptions3[freq3]}}
+      </picker>
+
+     
+    </view>
+    <text>                                                          
+  </text>
+
+
+    <view>一经保存,无法更改,请不要重复填写并核对所填信息</view>
+  </view>
+  <text> \n\n\n\n\n                                                   
+  </text>
+ 
+    
+  
+</view>

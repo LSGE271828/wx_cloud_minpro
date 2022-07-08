@@ -1,0 +1,81 @@
+<wxs module="util" src="../util.wxs" />
+<view class="container">
+  <view class="form-group">
+    <view class="form-cell">
+      <view class="form-cell_title" >填表人:{{a}}</view>
+      <view class="form-cell_title">填表时间:{{date}}</view>
+      <view class="form-cell_title"></view>
+      <text>今日体温(℃):</text> <input  placeholder="在此填写今日上午体温" 
+        bindinput="onTitleInput" value="{{title}}" />
+				
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">备注</view>
+      <input class="form-cell_input" placeholder="在此可填写备注消息(如手机尾号,代办事宜)" placeholder-class="form-cell_title-placeholder"
+        bindinput="onDescInput" value="{{desc}}" />
+    </view>
+
+  </view>
+  <view class="form-group">
+    <view class="form-cell inline">
+      <view>健康宝截图</view>
+      <view class="upload-text" bindtap="addFile">
+        {{(files.length === 0 ? "点击添加" : util.filterStr(fileName, 15))}}
+      </view>
+      <image class="upload" bindtap="addFile" src="../../images/add/next.png"></image>
+    </view>
+  </view>
+  <view class="form-group">
+   
+    <view class="form-cell inline">
+      <view>今日工作情况</view>
+      <picker class="option" bindchange="onChooseFreq4" range="{{freqOptions4}}">
+        {{freqOptions4[freq4]}}
+      </picker>
+      <picker class="selector" bindchange="onChooseFreq4" range="{{freqOptions4}}">
+        <image class="selector" src="../../images/add/next.png" />
+      </picker>
+    </view>
+    <view class="form-cell inline">
+      <view>有无11类不适</view>
+      <picker class="option" bindchange="onChooseFreq1" range="{{freqOptions1}}">
+        {{freqOptions1[freq1]}}
+      </picker>
+
+      <picker class="selector" bindchange="onChooseFreq1" range="{{freqOptions1}}">
+        <image class="selector" src="../../images/add/next.png" />
+      </picker>
+    </view>
+    <view class="form-cell inline">
+      <view>核酸是否有效</view>
+      <picker class="option" bindchange="onChooseFreq2" range="{{freqOptions2}}">
+        {{freqOptions2[freq2]}}
+      </picker>
+
+      <picker class="selector" bindchange="onChooseFreq2" range="{{freqOptions2}}">
+        <image class="selector" src="../../images/add/next.png" />
+      </picker>
+    </view>
+    <view class="form-cell inline">
+      <view>中高风险旅居史及人员接触</view>
+      <picker class="option" bindchange="onChooseFreq3" range="{{freqOptions3}}">
+        {{freqOptions3[freq3]}}
+      </picker>
+
+      <picker class="selector" bindchange="onChooseFreq3" range="{{freqOptions3}}">
+        <image class="selector" src="../../images/add/next.png" />
+      </picker>
+    </view>
+    <text>                                                          
+  </text>
+
+
+    <view>一经保存,无法更改,请不要重复填写并核对所填信息</view>
+  </view>
+  <text> \n\n\n\n\n                                                   
+  </text>
+  <view class="footer">
+    
+  <view class="save" bindtap="saveTodo">保存提交</view>
+  </view>
+</view>
